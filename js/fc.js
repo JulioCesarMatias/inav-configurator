@@ -398,18 +398,36 @@ var FC = {
                 Y: null,
                 Z: null
             },
-            magZero: {
+            magOffSet: {
                 X: null,
                 Y: null,
                 Z: null
+            },
+            magDiagonal: {
+                X: null,
+                Y: null,
+                Z: null
+            },
+            magOffDiagonal: {
+                X: null,
+                Y: null,
+                Z: null
+            },
+            MagScaleFactor: {
+                ScaleFactor: null
+            },
+            MagReportAndState: {
+                Fitness: null,
+                Attempt: null,
+                Status: null,
+                FitStep: null,
+                OriginalOrientation: null,
+                NewOrientation: null,
+                PercentageCompletion: null,
+                Finished: null
             },
             opflow: {
                 Scale: null
-            },
-            magGain: {
-                X: null,
-                Y: null,
-                Z: null
             }
         };
 

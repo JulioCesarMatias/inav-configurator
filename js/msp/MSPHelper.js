@@ -1308,17 +1308,37 @@ var mspHelper = (function (gui) {
                 CALIBRATION_DATA.accZero.X = data.getInt16(1, true);
                 CALIBRATION_DATA.accZero.Y = data.getInt16(3, true);
                 CALIBRATION_DATA.accZero.Z = data.getInt16(5, true);
+
                 CALIBRATION_DATA.accGain.X = data.getInt16(7, true);
                 CALIBRATION_DATA.accGain.Y = data.getInt16(9, true);
                 CALIBRATION_DATA.accGain.Z = data.getInt16(11, true);
-                CALIBRATION_DATA.magZero.X = data.getInt16(13, true);
-                CALIBRATION_DATA.magZero.Y = data.getInt16(15, true);
-                CALIBRATION_DATA.magZero.Z = data.getInt16(17, true);
-                CALIBRATION_DATA.opflow.Scale = (data.getInt16(19, true) / 256.0);
 
-                CALIBRATION_DATA.magGain.X = data.getInt16(21, true);
-                CALIBRATION_DATA.magGain.Y = data.getInt16(23, true);
-                CALIBRATION_DATA.magGain.Z = data.getInt16(25, true);
+                CALIBRATION_DATA.magOffSet.X = data.getInt16(13, true);
+                CALIBRATION_DATA.magOffSet.Y = data.getInt16(15, true);
+                CALIBRATION_DATA.magOffSet.Z = data.getInt16(17, true);
+
+                CALIBRATION_DATA.magDiagonal.X = data.getInt16(19, true);
+                CALIBRATION_DATA.magDiagonal.Y = data.getInt16(21, true);
+                CALIBRATION_DATA.magDiagonal.Z = data.getInt16(23, true);
+
+                CALIBRATION_DATA.magOffDiagonal.X = data.getInt16(25, true);
+                CALIBRATION_DATA.magOffDiagonal.Y = data.getInt16(27, true);
+                CALIBRATION_DATA.magOffDiagonal.Z = data.getInt16(29, true);
+
+                CALIBRATION_DATA.MagScaleFactor.ScaleFactor = data.getInt16(31, true);
+
+                CALIBRATION_DATA.MagReportAndState.Fitness = data.getInt16(33, true);
+                CALIBRATION_DATA.MagReportAndState.Attempt = data.getUint8(35, true);
+
+                CALIBRATION_DATA.MagReportAndState.Status = data.getUint8(36, true);
+                CALIBRATION_DATA.MagReportAndState.FitStep = data.getUint8(37, true);
+
+                CALIBRATION_DATA.MagReportAndState.OriginalOrientation = data.getUint8(38, true);
+                CALIBRATION_DATA.MagReportAndState.NewOrientation = data.getUint8(39, true);
+                CALIBRATION_DATA.MagReportAndState.PercentageCompletion = data.getInt16(40, true);
+                CALIBRATION_DATA.MagReportAndState.Finished = data.getUint8(42, true);
+
+                CALIBRATION_DATA.opflow.Scale = (data.getInt16(43, true) / 256.0);
 
                 break;
 
@@ -1973,26 +1993,8 @@ var mspHelper = (function (gui) {
                 buffer.push(lowByte(CALIBRATION_DATA.accGain.Z));
                 buffer.push(highByte(CALIBRATION_DATA.accGain.Z));
 
-                buffer.push(lowByte(CALIBRATION_DATA.magZero.X));
-                buffer.push(highByte(CALIBRATION_DATA.magZero.X));
-
-                buffer.push(lowByte(CALIBRATION_DATA.magZero.Y));
-                buffer.push(highByte(CALIBRATION_DATA.magZero.Y));
-
-                buffer.push(lowByte(CALIBRATION_DATA.magZero.Z));
-                buffer.push(highByte(CALIBRATION_DATA.magZero.Z));
-
                 buffer.push(lowByte(Math.round(CALIBRATION_DATA.opflow.Scale * 256)));
                 buffer.push(highByte(Math.round(CALIBRATION_DATA.opflow.Scale * 256)));
-
-                buffer.push(lowByte(CALIBRATION_DATA.magGain.X));
-                buffer.push(highByte(CALIBRATION_DATA.magGain.X));
-
-                buffer.push(lowByte(CALIBRATION_DATA.magGain.Y));
-                buffer.push(highByte(CALIBRATION_DATA.magGain.Y));
-
-                buffer.push(lowByte(CALIBRATION_DATA.magGain.Z));
-                buffer.push(highByte(CALIBRATION_DATA.magGain.Z));
 
                 break;
 

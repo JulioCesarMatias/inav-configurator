@@ -70,7 +70,7 @@ TABS.calibration.initialize = function (callback) {
         //noinspection JSUnresolvedVariable
         GUI.log(chrome.i18n.getMessage('configurationEepromSaved'));
 
-        GUI.tab_switch_cleanup(function() {
+        GUI.tab_switch_cleanup(function () {
             MSP.send_message(MSPCodes.MSP_SET_REBOOT, false, false, reinitialize);
         });
     }
@@ -102,9 +102,11 @@ TABS.calibration.initialize = function (callback) {
         pos.forEach(function (item) {
             $('[name=accGain' + item + ']').val(CALIBRATION_DATA.accGain[item]);
             $('[name=accZero' + item + ']').val(CALIBRATION_DATA.accZero[item]);
-            $('[name=Mag' + item + ']').val(CALIBRATION_DATA.magZero[item]);
-            $('[name=MagGain' + item + ']').val(CALIBRATION_DATA.magGain[item]);
+            $('[name=MagOffSet' + item + ']').val(CALIBRATION_DATA.magOffSet[item]);
+            $('[name=MagDiagonal' + item + ']').val(CALIBRATION_DATA.magDiagonal[item]);
+            $('[name=MagOffDiagonal' + item + ']').val(CALIBRATION_DATA.magOffDiagonal[item]);
         });
+        $('[name=MagScaleFactor]').val(CALIBRATION_DATA.MagScaleFactor.ScaleFactor);
         $('[name=OpflowScale]').val(CALIBRATION_DATA.opflow.Scale);
         updateCalibrationSteps();
     }
@@ -187,17 +189,17 @@ TABS.calibration.initialize = function (callback) {
             $('#calibrate-start-button').addClass("calibrate");
             $('#calibrate-start-button').removeClass("resetCalibration");
         }
-    
+
         if (callback) callback();
     }
-    
+
     function actionCalibrateButton(callback) {
         if ($('#calibrate-start-button').hasClass("resetCalibration")) {
             resetAccCalibration();
         } else {
             calibrateNew();
         }
-    
+
         if (callback) callback();
     }
 
@@ -238,35 +240,69 @@ TABS.calibration.initialize = function (callback) {
 
             let modalProcessing = new jBox('Modal', {
                 width: 400,
-                height: 100,
+                height: 540,
                 animation: false,
                 closeOnClick: false,
                 closeOnEsc: false,
                 content: $('#modal-compass-processing').clone()
             }).open();
 
-            var countdown = 30;
-            helper.interval.add('compass_calibration_interval', function () {
-                countdown--;
-                if (countdown === 0) {
-                    setTimeout(function () {
-                        $(button).removeClass('disabled');
+            var MagCalibrationFinished = CALIBRATION_DATA.MagReportAndState.Finished;
 
-                        modalProcessing.close();
-                        GUI.log(chrome.i18n.getMessage('initialSetupMagCalibEnded'));
-                        
-                        MSP.send_message(MSPCodes.MSP_CALIBRATION_DATA, false, false, updateSensorData);
-                        helper.interval.remove('compass_calibration_interval');
+            //if (MagCalibrationFinished === 0) {
+            /*$(button).removeClass('disabled');
 
-                        //Cleanup
-                        delete modalProcessing;
-                        $('.jBox-wrapper').remove();
-                    }, 1000);
-                } else {
-                    modalProcessing.content.find('.modal-compass-countdown').text(countdown);
+            modalProcessing.close();
+            GUI.log(chrome.i18n.getMessage('initialSetupMagCalibEnded'));
+
+            MSP.send_message(MSPCodes.MSP_CALIBRATION_DATA, false, false, updateSensorData);
+
+            //Cleanup
+            delete modalProcessing;
+            $('.jBox-wrapper').remove();*/
+            //} else {
+            helper.interval.add('compass_calibration_msp_interval', function () {
+
+                /*modalProcessing.content.find('.modal-compass-Off-Set-X').text("Off-Set X:" + $('[name=MagOffSetX').val(CALIBRATION_DATA.magOffSet[0]));
+                modalProcessing.content.find('.modal-compass-Off-Set-Y').text("Off-Set Y:" + $('[name=MagOffSetY').val(CALIBRATION_DATA.magOffSet[1]));
+                modalProcessing.content.find('.modal-compass-Off-Set-Z').text("Off-Set Z:" + $('[name=MagOffSetZ').val(CALIBRATION_DATA.magOffSet[2]));
+
+                modalProcessing.content.find('.modal-compass-Diagonal-X').text("Diagonal X:" + $('[name=MagDiagonalX').val(CALIBRATION_DATA.magDiagonal[0]));
+                modalProcessing.content.find('.modal-compass-Diagonal-Y').text("Diagonal Y:" + $('[name=MagDiagonalY').val(CALIBRATION_DATA.magDiagonal[1]));
+                modalProcessing.content.find('.modal-compass-Diagonal-Z').text("Diagonal Z:" + $('[name=MagDiagonalZ').val(CALIBRATION_DATA.magDiagonal[2]));
+
+                modalProcessing.content.find('.modal-compass-Off-Diagonal-X').text("Off Diagonal X:" + $('[name=MagOffDiagonalX').val(CALIBRATION_DATA.magOffDiagonal[0]));
+                modalProcessing.content.find('.modal-compass-Off-Diagonal-Y').text("Off Diagonal Y:" + $('[name=MagOffDiagonalY').val(CALIBRATION_DATA.magOffDiagonal[1]));
+                modalProcessing.content.find('.modal-compass-Off-Diagonal-Z').text("Off Diagonal Z:" + $('[name=MagOffDiagonalZ').val(CALIBRATION_DATA.magOffDiagonal[2]));*/
+
+                modalProcessing.content.find('.modal-compass-ScaleFactor').text("Scale Factor:" + $('[name=MagScaleFactor]').val(CALIBRATION_DATA.ScaleFactor));
+
+                modalProcessing.content.find('.modal-compass-Fitness').text("Fitness:" + CALIBRATION_DATA.MagReportAndState.Fitness);
+
+                modalProcessing.content.find('.modal-compass-Attempt').text("Attempt:" + CALIBRATION_DATA.MagReportAndState.Attempt);
+
+                modalProcessing.content.find('.modal-compass-Fitness').text("Status:" + CALIBRATION_DATA.MagReportAndState.Status);
+
+                modalProcessing.content.find('.modal-compass-Attempt').text("FitStep:" + CALIBRATION_DATA.MagReportAndState.FitStep);
+
+                modalProcessing.content.find('.modal-compass-OriginalOrientation').text("Original Orientation:" + CALIBRATION_DATA.MagReportAndState.OriginalOrientation);
+
+                modalProcessing.content.find('.modal-compass-NewOrientation').text("New Orientation:" + CALIBRATION_DATA.MagReportAndState.NewOrientation);
+
+                modalProcessing.content.find('.modal-compass-PercentageCompletion').text("Percentage Completion:");
+
+                var progressLabel = $('.progressLabel');
+                var progressBar = $('.progress');
+                progressLabel.text(CALIBRATION_DATA.MagReportAndState.PercentageCompletion);
+                progressBar.val(CALIBRATION_DATA.MagReportAndState.PercentageCompletion);
+
+                if (CALIBRATION_DATA.MagReportAndState.PercentageCompletion === 100) {
+                    //helper.interval.remove('compass_calibration_msp_interval');
                 }
 
-            }, 1000);
+                MSP.send_message(MSPCodes.MSP_CALIBRATION_DATA, false, false, updateSensorData);
+            }, 250);
+            //}
         });
 
         $('#opflow_btn').on('click', function () {
@@ -316,7 +352,7 @@ TABS.calibration.initialize = function (callback) {
 
         setupCalibrationButton();
         $('#calibrate-start-button').on('click', actionCalibrateButton);
-       
+
         MSP.send_message(MSPCodes.MSP_CALIBRATION_DATA, false, false, updateSensorData);
 
         GUI.content_ready(callback);

@@ -71,20 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cf_column fourth">
-                <!-- div class="gui_box grey">
-                    <div class="gui_box_titlebar">
-                        <div class="spacer_box_title" data-i18n="calibrationHead3"></div>
-                    </div>
-                    <div class="spacer_box">
-                        <span data-i18n="LevCalText">text</span>
-                        <div class="default_btn">
-                            <div id="level_btn">
-                                <a class="level" href="#" data-i18n="LevBtn"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div -->
+            <div class="cf_column threefourth_left">
                 <div class="gui_box grey">
                     <div class="gui_box_titlebar">
                         <div class="spacer_box_title" data-i18n="calibrationHead4"></div>
@@ -98,28 +85,44 @@
                         </div>
                         <table id="mag-calibrated-data" class="cf_table">
                             <tr>
-                                <td><label for="MagX" data-i18n="MagXText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagX" min="-32768" max="32767"></td>
+                                <td><label for="MagOffSetX" data-i18n="MagOffSetXText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffSetX" min="-32768" max="32767"></td>
                             </tr>
                             <tr>
-                                <td><label for="MagY" data-i18n="MagYText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagY" min="-32768" max="32767"></td>
+                                <td><label for="MagOffSetY" data-i18n="MagOffSetYText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffSetY" min="-32768" max="32767"></td>
                             </tr>
                             <tr>
-                                <td><label for="MagZ" data-i18n="MagZText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagZ" min="-32768" max="32767"></td>
+                                <td><label for="MagOffSetZ" data-i18n="MagOffSetZText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffSetZ" min="-32768" max="32767"></td>
                             </tr>
                             <tr>
-                                <td><label for="MagGainX" data-i18n="MagGainXText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagGainX" min="-32768" max="32767"></td>
+                                <td><label for="MagDiagonalX" data-i18n="MagDiagonalXText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagDiagonalX" min="-32768" max="32767"></td>
                             </tr>
                             <tr>
-                                <td><label for="MagGainY" data-i18n="MagGainYText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagGainY" min="-32768" max="32767"></td>
+                                <td><label for="MagDiagonalY" data-i18n="MagDiagonalYText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagDiagonalY" min="-32768" max="32767"></td>
                             </tr>
                             <tr>
-                                <td><label for="MagGainZ" data-i18n="MagGainZText"><span></span></label></td>
-                                <td><input readonly disabled type="number" name="MagGainZ" min="-32768" max="32767"></td>
+                                <td><label for="MagDiagonalZ" data-i18n="MagDiagonalZText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagDiagonalZ" min="-32768" max="32767"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="MagOffDiagonalX" data-i18n="MagOffDiagonalXText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffDiagonalX" min="-32768" max="32767"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="MagOffDiagonalY" data-i18n="MagOffDiagonalYText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffDiagonalY" min="-32768" max="32767"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="MagOffDiagonalZ" data-i18n="MagOffDiagonalZText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagOffDiagonalZ" min="-32768" max="32767"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="MagScaleFactor" data-i18n="MagScaleFactorText"><span></span></label></td>
+                                <td><input readonly disabled type="number" name="MagScaleFactor" min="-32768" max="32767"></td>
                             </tr>
                         </table>
                     </div>
@@ -180,7 +183,39 @@
 <div id="modal-compass-processing" class="is-hidden">
     <div class="modal__content">
         <h1 class="modal__title modal__title--center" data-i18n="accCalibrationProcessing"></h1>
-        <div class="modal-compass-countdown modal__text"></div>
+        <div class="modal-compass-Satus modal__text"></div>
+        <div class="modal-compass-Off-Set-X modal__text"></div>
+        <div class="modal-compass-Off-Set-Y modal__text"></div>
+        <div class="modal-compass-Off-Set-Z modal__text"></div>
+        <br>
+        <div class="modal-compass-Diagonal-X modal__text"></div>
+        <div class="modal-compass-Diagonal-Y modal__text"></div>
+        <div class="modal-compass-Diagonal-Z modal__text"></div>
+        <br>
+        <div class="modal-compass-Off-Diagonal-X modal__text"></div>
+        <div class="modal-compass-Off-Diagonal-Y modal__text"></div>
+        <div class="modal-compass-Off-Diagonal-Z modal__text"></div>
+        <br>
+        <div class="modal-compass-ScaleFactor modal__text"></div>
+        <br>
+        <div class="modal-compass-Fitness modal__text"></div>
+        <br>
+        <div class="modal-compass-Attempt modal__text"></div>
+        <br>
+        <div class="modal-compass-Status modal__text"></div>
+        <br>
+        <div class="modal-compass-StepFit modal__text"></div>
+        <br>
+        <div class="modal-compass-OriginalOrientation modal__text"></div>
+        <br>
+        <div class="modal-compass-NewOrientation modal__text"></div>
+        <br>
+        <div class="modal-compass-PercentageCompletion modal__text"></div>
+        <div class="info">
+            <a name="progressbar"></a>
+            <progress class="progress" value="0" min="0" max="100"></progress>
+            <div class="progressLabel" style="margin-top: -21px; width: 95%; text-align: center; color: white; position: absolute;"></div>
+        </div>
     </div>
 </div>
 

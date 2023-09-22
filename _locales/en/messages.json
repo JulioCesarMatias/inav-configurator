@@ -2710,6 +2710,9 @@
     "sensorMagnetometer": {
         "message": "Magnetometer"
     },
+    "sensorMagnetometerExternal": {
+        "message": "The Magnetometer is internal or external?"
+    },
     "sensorBarometer": {
         "message": "Barometer"
     },
@@ -2791,7 +2794,6 @@
     "AccBtn": {
         "message": "Calibrate Accelerometer"
     },
-
     "stepTitle1": {
         "message": "Step 1"
     },
@@ -2810,23 +2812,35 @@
     "stepTitle6": {
         "message": "Step 6"
     },
-    "MagXText": {
-        "message": "Zero X"
+    "MagOffSetXText": {
+        "message": "OffSet X"
     },
-    "MagYText": {
-        "message": "Zero Y"
+    "MagOffSetYText": {
+        "message": "OffSet Y"
     },
-    "MagZText": {
-        "message": "Zero Z"
+    "MagOffSetZText": {
+        "message": "OffSet Z"
     },
-    "MagGainXText": {
-        "message": "Gain X"
+    "MagDiagonalXText": {
+        "message": "Diagonal X"
     },
-    "MagGainYText": {
-        "message": "Gain Y"
+    "MagDiagonalYText": {
+        "message": "Diagonal Y"
     },
-    "MagGainZText": {
-        "message": "Gain Z"
+    "MagDiagonalZText": {
+        "message": "Diagonal Z"
+    },
+    "MagOffDiagonalXText": {
+        "message": "OffDiagonal X"
+    },
+    "MagOffDiagonalYText": {
+        "message": "OffDiagonal Y"
+    },
+    "MagOffDiagonalZText": {
+        "message": "OffDiagonal Z"
+    },
+    "MagScaleFactorText": {
+        "message": "Scale Factor"
     },
     "OpflowScaleText": {
         "message": "Scale"
@@ -2835,7 +2849,7 @@
         "message": "Reset Accelerometer Calibration"
     },
     "MagCalText": {
-        "message": "After pressing the button you have 30 seconds to hold the model in the air and rotate it so that each side (front, back, left, right, top and bottom) points down towards the earth. Be sure that your compass is not near magnets or electromagnets when installed in the craft or performing the calibration."
+        "message": "There are two Compass calibration modes:<br/><br/>The first and defined by default is <strong>SAMPLES</strong> mode. If this mode is configured in the <strong>mag_cal_type</strong> parameter, after clicking the button to start the calibration, you must move your UAV in several directions, and wait until the system obtains enough samples to complete the calibration. If you have the GPS working in <strong>SAMPLES</strong> mode, it can be useful to set the Compass scale factor (aka <strong>magscalefactor</strong> parameter).<br/><br/>The second is <strong>GPS</strong> type mode. This calibration mode is intended for large UAVs, where <strong>SAMPLES</strong> mode becomes difficult to perform. If the mode <strong>GPS</strong> is configured in the <strong>mag_cal_type</strong> parameter, you must follow some requirements:<br/><br/>1: Have an active Compass.<br/>2: Keep your UAV stationary.<br/>3: Have 8 or more satellites connected to the GPS.<br/><br/>If the above steps are complete, click on the calibration button, and wait for the system to automatically calculate the calibration Off-Sets for your compass.<br/>"
     },
     "MagBtn": {
         "message": "Calibrate Compass"
