@@ -2707,11 +2707,20 @@
     "sensorAccelerometer": {
         "message": "Accelerometer"
     },
-    "sensorMagnetometer": {
-        "message": "Magnetometer"
+    "firstSensorMagnetometer": {
+        "message": "1st Magnetometer"
     },
-    "sensorMagnetometerExternal": {
-        "message": "The Magnetometer is internal or external?"
+    "firstSensorMagnetometerExternal": {
+        "message": "The 1st Magnetometer is internal or external?"
+    },
+    "MagnetometerPriority": {
+        "message": "What is the priority of this Magnetometer?"
+    },
+    "secondSensorMagnetometer": {
+        "message": "2st Magnetometer"
+    },
+    "secondSensorMagnetometerExternal": {
+        "message": "The 2st Magnetometer is internal or external?"
     },
     "sensorBarometer": {
         "message": "Barometer"

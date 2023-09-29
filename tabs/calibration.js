@@ -105,8 +105,12 @@ TABS.calibration.initialize = function (callback) {
             $('[name=MagOffSet' + item + ']').val(CALIBRATION_DATA.magOffSet[item]);
             $('[name=MagDiagonal' + item + ']').val(CALIBRATION_DATA.magDiagonal[item]);
             $('[name=MagOffDiagonal' + item + ']').val(CALIBRATION_DATA.magOffDiagonal[item]);
+            CALIBRATION_DATA.magOffSet[item] = parseFloat($('[name=MagOffSet' + item + ']').val());
+            CALIBRATION_DATA.magDiagonal[item] = parseFloat($('[name=MagDiagonal' + item + ']').val());
+            CALIBRATION_DATA.magOffDiagonal[item] = parseFloat($('[name=MagOffDiagonal' + item + ']').val());
         });
         $('[name=MagScaleFactor]').val(CALIBRATION_DATA.MagScaleFactor.ScaleFactor);
+        CALIBRATION_DATA.MagScaleFactor.ScaleFactor = parseFloat($('[name=MagScaleFactor]').val());
         $('[name=OpflowScale]').val(CALIBRATION_DATA.opflow.Scale);
         updateCalibrationSteps();
     }
@@ -281,9 +285,9 @@ TABS.calibration.initialize = function (callback) {
 
                 modalProcessing.content.find('.modal-compass-Attempt').text("Attempt:" + CALIBRATION_DATA.MagReportAndState.Attempt);
 
-                modalProcessing.content.find('.modal-compass-Fitness').text("Status:" + CALIBRATION_DATA.MagReportAndState.Status);
+                modalProcessing.content.find('.modal-compass-Status').text("Status:" + CALIBRATION_DATA.MagReportAndState.Status);
 
-                modalProcessing.content.find('.modal-compass-Attempt').text("FitStep:" + CALIBRATION_DATA.MagReportAndState.FitStep);
+                modalProcessing.content.find('.modal-compass-FitStep').text("FitStep:" + CALIBRATION_DATA.MagReportAndState.FitStep);
 
                 modalProcessing.content.find('.modal-compass-OriginalOrientation').text("Original Orientation:" + CALIBRATION_DATA.MagReportAndState.OriginalOrientation);
 
