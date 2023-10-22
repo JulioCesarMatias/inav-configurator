@@ -2830,24 +2830,6 @@
     "MagOffSetZText": {
         "message": "OffSet Z"
     },
-    "MagDiagonalXText": {
-        "message": "Diagonal X"
-    },
-    "MagDiagonalYText": {
-        "message": "Diagonal Y"
-    },
-    "MagDiagonalZText": {
-        "message": "Diagonal Z"
-    },
-    "MagOffDiagonalXText": {
-        "message": "OffDiagonal X"
-    },
-    "MagOffDiagonalYText": {
-        "message": "OffDiagonal Y"
-    },
-    "MagOffDiagonalZText": {
-        "message": "OffDiagonal Z"
-    },
     "MagScaleFactorText": {
         "message": "Scale Factor"
     },

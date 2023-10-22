@@ -1317,28 +1317,20 @@ var mspHelper = (function (gui) {
                 CALIBRATION_DATA.magOffSet.Y = data.getInt16(15, true) / 100.0;
                 CALIBRATION_DATA.magOffSet.Z = data.getInt16(17, true) / 100.0;
 
-                CALIBRATION_DATA.magDiagonal.X = data.getInt16(19, true) / 100.0;
-                CALIBRATION_DATA.magDiagonal.Y = data.getInt16(21, true) / 100.0;
-                CALIBRATION_DATA.magDiagonal.Z = data.getInt16(23, true) / 100.0;
+                CALIBRATION_DATA.MagScaleFactor.ScaleFactor = data.getInt16(19, true) / 100.0;
 
-                CALIBRATION_DATA.magOffDiagonal.X = data.getInt16(25, true) / 100.0;
-                CALIBRATION_DATA.magOffDiagonal.Y = data.getInt16(27, true) / 100.0;
-                CALIBRATION_DATA.magOffDiagonal.Z = data.getInt16(29, true) / 100.0;
+                CALIBRATION_DATA.MagReportAndState.Fitness = data.getInt16(21, true);
+                CALIBRATION_DATA.MagReportAndState.Attempt = data.getUint8(23, true);
 
-                CALIBRATION_DATA.MagScaleFactor.ScaleFactor = data.getInt16(31, true) / 100.0;
+                CALIBRATION_DATA.MagReportAndState.Status = data.getUint8(24, true);
+                CALIBRATION_DATA.MagReportAndState.FitStep = data.getUint8(25, true);
 
-                CALIBRATION_DATA.MagReportAndState.Fitness = data.getInt16(33, true);
-                CALIBRATION_DATA.MagReportAndState.Attempt = data.getUint8(35, true);
+                CALIBRATION_DATA.MagReportAndState.OriginalOrientation = data.getUint8(26, true);
+                CALIBRATION_DATA.MagReportAndState.NewOrientation = data.getUint8(27, true);
+                CALIBRATION_DATA.MagReportAndState.PercentageCompletion = data.getInt16(28, true);
+                CALIBRATION_DATA.MagReportAndState.Finished = data.getUint8(30, true);
 
-                CALIBRATION_DATA.MagReportAndState.Status = data.getUint8(36, true);
-                CALIBRATION_DATA.MagReportAndState.FitStep = data.getUint8(37, true);
-
-                CALIBRATION_DATA.MagReportAndState.OriginalOrientation = data.getUint8(38, true);
-                CALIBRATION_DATA.MagReportAndState.NewOrientation = data.getUint8(39, true);
-                CALIBRATION_DATA.MagReportAndState.PercentageCompletion = data.getInt16(40, true);
-                CALIBRATION_DATA.MagReportAndState.Finished = data.getUint8(42, true);
-
-                CALIBRATION_DATA.opflow.Scale = (data.getInt16(43, true) / 256.0);
+                CALIBRATION_DATA.opflow.Scale = (data.getInt16(31, true) / 256.0);
 
                 break;
 

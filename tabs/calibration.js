@@ -103,11 +103,7 @@ TABS.calibration.initialize = function (callback) {
             $('[name=accGain' + item + ']').val(CALIBRATION_DATA.accGain[item]);
             $('[name=accZero' + item + ']').val(CALIBRATION_DATA.accZero[item]);
             $('[name=MagOffSet' + item + ']').val(CALIBRATION_DATA.magOffSet[item]);
-            $('[name=MagDiagonal' + item + ']').val(CALIBRATION_DATA.magDiagonal[item]);
-            $('[name=MagOffDiagonal' + item + ']').val(CALIBRATION_DATA.magOffDiagonal[item]);
             CALIBRATION_DATA.magOffSet[item] = parseFloat($('[name=MagOffSet' + item + ']').val());
-            CALIBRATION_DATA.magDiagonal[item] = parseFloat($('[name=MagDiagonal' + item + ']').val());
-            CALIBRATION_DATA.magOffDiagonal[item] = parseFloat($('[name=MagOffDiagonal' + item + ']').val());
         });
         $('[name=MagScaleFactor]').val(CALIBRATION_DATA.MagScaleFactor.ScaleFactor);
         CALIBRATION_DATA.MagScaleFactor.ScaleFactor = parseFloat($('[name=MagScaleFactor]').val());
@@ -266,21 +262,6 @@ TABS.calibration.initialize = function (callback) {
             $('.jBox-wrapper').remove();*/
             //} else {
             helper.interval.add('compass_calibration_msp_interval', function () {
-
-                /*modalProcessing.content.find('.modal-compass-Off-Set-X').text("Off-Set X:" + $('[name=MagOffSetX').val(CALIBRATION_DATA.magOffSet[0]));
-                modalProcessing.content.find('.modal-compass-Off-Set-Y').text("Off-Set Y:" + $('[name=MagOffSetY').val(CALIBRATION_DATA.magOffSet[1]));
-                modalProcessing.content.find('.modal-compass-Off-Set-Z').text("Off-Set Z:" + $('[name=MagOffSetZ').val(CALIBRATION_DATA.magOffSet[2]));
-
-                modalProcessing.content.find('.modal-compass-Diagonal-X').text("Diagonal X:" + $('[name=MagDiagonalX').val(CALIBRATION_DATA.magDiagonal[0]));
-                modalProcessing.content.find('.modal-compass-Diagonal-Y').text("Diagonal Y:" + $('[name=MagDiagonalY').val(CALIBRATION_DATA.magDiagonal[1]));
-                modalProcessing.content.find('.modal-compass-Diagonal-Z').text("Diagonal Z:" + $('[name=MagDiagonalZ').val(CALIBRATION_DATA.magDiagonal[2]));
-
-                modalProcessing.content.find('.modal-compass-Off-Diagonal-X').text("Off Diagonal X:" + $('[name=MagOffDiagonalX').val(CALIBRATION_DATA.magOffDiagonal[0]));
-                modalProcessing.content.find('.modal-compass-Off-Diagonal-Y').text("Off Diagonal Y:" + $('[name=MagOffDiagonalY').val(CALIBRATION_DATA.magOffDiagonal[1]));
-                modalProcessing.content.find('.modal-compass-Off-Diagonal-Z').text("Off Diagonal Z:" + $('[name=MagOffDiagonalZ').val(CALIBRATION_DATA.magOffDiagonal[2]));*/
-
-                modalProcessing.content.find('.modal-compass-ScaleFactor').text("Scale Factor:" + $('[name=MagScaleFactor]').val(CALIBRATION_DATA.ScaleFactor));
-
                 modalProcessing.content.find('.modal-compass-Fitness').text("Fitness:" + CALIBRATION_DATA.MagReportAndState.Fitness);
 
                 modalProcessing.content.find('.modal-compass-Attempt').text("Attempt:" + CALIBRATION_DATA.MagReportAndState.Attempt);

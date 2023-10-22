@@ -403,16 +403,6 @@ var FC = {
                 Y: null,
                 Z: null
             },
-            magDiagonal: {
-                X: null,
-                Y: null,
-                Z: null
-            },
-            magOffDiagonal: {
-                X: null,
-                Y: null,
-                Z: null
-            },
             MagScaleFactor: {
                 ScaleFactor: null
             },
@@ -639,14 +629,13 @@ var FC = {
     },
     getSensorAlignments: function () {
         return [
-            'CW 0°',
-            'CW 90°',
-            'CW 180°',
-            'CW 270°',
-            'CW 0° flip',
-            'CW 90° flip',
-            'CW 180° flip',
-            'CW 270° flip'
+            'Roll 180°',
+            'Roll 180° Yaw 90°',
+            'Roll 180° Yaw 270°',
+            'Pitch 180°',
+            'Yaw 90°',
+            'Yaw 180°',
+            'Yaw 270°',
         ];
     },
     getEscProtocols: function () {
