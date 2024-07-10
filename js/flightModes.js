@@ -188,7 +188,7 @@ var FLIGHT_MODES = [
     },
     {
         boxId: 36,
-        boxName: "MC BRAKING",
+        boxName: "NAV LOITER",
         permanentId: 46
     },
     {
